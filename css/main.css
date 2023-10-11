@@ -1,0 +1,134 @@
+/* COMMON */
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400px;
+  line-height: 1.4;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* HEADER */
+header {
+  background-color: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+header .inner {
+  width: 1100px;
+  height: 120px;
+  margin: 0 auto;
+  /* background-color: orange; */
+  position: relative;
+}
+
+header .logo {
+  height: 75px;
+  /* 부모요소를 기준으로 위치 배치 */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+   /* auto는 브라우저가 margin을 자동 계산 위의 설정해준 기준값에서 가운데 정렬 해준다.
+  근데 하나 값이 더 필요한게, 바로 요소의 높이값을알아야 정렬해준다. */
+  margin: auto;
+  /* 거슬리면 잠시 꺼둘수 있다. */
+  /* display: none; */
+}
+
+header .sub-menu {
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+header .sub-menu ul.menu {
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+header .sub-menu ul.menu li {
+  position: relative;
+}
+/* 서브메뉴 사이에 선 넣기 */
+header .sub-menu ul.menu li::before {
+  /* 값이 없어도 무조건 있어야 가상 요소 사용가능 */
+  content: "";
+  display: block;
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  /* 부모 li 기준 수직 가운데 정렬 
+    position absolute는 요소를 블럭으로 변하게한다.
+  */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+/* 서브메뉴 첫번쨰 구분선 제거 */
+header .sub-menu ul.menu li:first-child::before {
+  display: none;
+}
+
+header .sub-menu ul.menu li a {
+  /* background-color: red; */
+  padding: 11px 16px;
+  display: block;
+  color: #656565;
+
+}
+
+header .sub-menu ul.menu li a:hover  {
+  color: #000;
+}
+
+header .sub-menu .search {
+  height: 34px;
+  position: relative;
+}
+
+header .sub-menu .search input {
+  width: 36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  /* 요소의 크기 기준을 34, 36에 맞춘다.
+  패딩이 추가되어도 넓이 높이가 바뀌지 않음 */
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+  color: #777;
+  font-size: 12px;
+  transition: width .4s;
+}
+
+header .sub-menu .search input:focus {
+  width: 190px;
+  border-color: #669900;
+} 
+
+header .sub-menu .search .material-icons{
+  height: 24px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto 0;
+  transition: .4s;
+}
+
+/* 일치선택자로 focused추가 */
+/* focued가 추가되면 아이콘이 안보이게 하기 */
+header .sub-menu .search.focused .material-icons {
+  opacity: 0;
+}
