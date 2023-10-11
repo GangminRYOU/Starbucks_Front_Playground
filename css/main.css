@@ -14,19 +14,27 @@ img {
 a {
   text-decoration: none;
 }
+/* inner클래스를 통해 블럭내부에서 배치를한다. */
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+  /* 내부에서 위치를 잡아야하기 때문에 추가 */
+  position: relative;
+}
+
 
 /* HEADER */
 header {
   background-color: #f6f5f0;
   border-bottom: 1px solid #c8c8c8;
 }
-
-header .inner {
-  width: 1100px;
+/* 메인 메뉴의 inner가 영향을 받으면 안되기 때문에, 자식요소를 선택하는 >를 추가 */
+header > .inner {
+  /* width: 1100px; */
   height: 120px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   /* background-color: orange; */
-  position: relative;
+  /* position: relative; */
 }
 
 header .logo {
@@ -131,4 +139,99 @@ header .sub-menu .search .material-icons{
 /* focued가 추가되면 아이콘이 안보이게 하기 */
 header .sub-menu .search.focused .material-icons {
   opacity: 0;
+}
+
+header .main-menu {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+header .main-menu .item{
+
+}
+header .main-menu .item .item__name{
+  padding: 10px 20px 34px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* 드롭다운 메뉴인 item__content에도 영향이 가야하기 때문에 여기에 hover */
+header .main-menu .item:hover .item__name{
+  background-color: #2c2a29;
+  color: #669900;
+  /* 좌상단, 우상단만 모서리 깎기 */
+  border-radius: 6px 6px 0 0;
+}
+
+/* 서브 메뉴 */
+header .main-menu .item .item__contents{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  display: none ;
+}
+
+/* 메인 메뉴에 마우스 올렸을때 보이기 */
+header .main-menu .item:hover .item__contents{
+  display: block;
+}
+
+header .main-menu .item .item__contents .contents__menu {
+  background-color: #2c2a29;
+}
+
+/* contents_menu안에는 ul태그가 2개 들어있기 떄문에, 
+  하위선택자로 하면, contents_menu안에있는 모든 ul태그가 다 영향을 받는다.
+  바로 자식에 해당하는 ul태그만 명시
+*/
+/* 메인 메뉴의 서브 메뉴 컨테이너*/
+header .main-menu .item .item__contents .contents__menu > ul{
+  display: flex;
+  padding: 20px 0;
+}
+/* 각 서브메뉴 */
+header .main-menu .item .item__contents .contents__menu > ul > li{
+  width: 220px;
+}
+/* 서브메뉴 제목 */
+header .main-menu .item .item__contents .contents__menu > ul > li h4{
+  padding: 3px 0 12px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* 서브 메뉴의 내부 컨테이너 */
+header .main-menu .item .item__contents .contents__menu > ul > li ul{
+
+}
+/* 서브메뉴 내부 컨테이너의 리스트 */
+header .main-menu .item .item__contents .contents__menu > ul > li ul li:hover{
+  color: #669900;
+}
+
+header .main-menu .item .item__contents .contents__menu > ul > li ul li{
+  padding: 5px 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+}
+
+header .main-menu .item .item__contents .contents__texture {
+  padding: 26px 0;
+  font-size: 12px;
+  background-image: url(../images/main_menu_pattern.jpg);
+  /* background-repeat: no-repeat; */
+}
+
+header .main-menu .item .item__contents .contents__texture h4{
+  color: #999;
+  font-weight: 700;
+
+}
+
+header .main-menu .item .item__contents .contents__texture p{
+  color: #669900;
+  margin: 4px 0 14px;
 }
