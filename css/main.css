@@ -5,6 +5,7 @@ body {
   font-weight: 400px;
   line-height: 1.4;
   font-family: 'Nanum Gothic', sans-serif;
+  height: 3000px;
 }
 
 img {
@@ -22,11 +23,79 @@ a {
   position: relative;
 }
 
+.btn {
+  width: 130px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  /* a태그나 span태그에 부여했을때도 똑같이 부여되도록 */
+  display: block;
+  transition: .4s;
+}
+
+.btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* 그냥 버튼 보다 더 우선순위가 높다. */
+.btn.btn--reverse {
+  color: #fff;
+  border-color: #333;
+}
+
+.btn.btn--reverse:hover {
+  color: #333;
+  background-color: transparent;
+}
+
+.btn.btn--brown {
+  color: #592B18;
+  border-color: #592B18;
+}
+
+.btn.btn--brown:hover {
+  color: #fff;
+  background-color: #592B18;
+}
+
+.btn.btn--gold {
+  color: #D9AA8A;
+  border-color: #D9AA8A;
+}
+
+.btn.btn--gold :hover{
+  color: #fff;
+  background-color: #D9AA8A;
+}
+
+.btn.btn--white {
+  color: #FFF;
+  border-color: #FFF;
+}
+
+.btn.btn--white {
+  color: #333;
+  background-color: #FFF;
+}
 
 /* HEADER */
 header {
+  /* position: relative; */
+  width: 100%;
   background-color: #f6f5f0;
   border-bottom: 1px solid #c8c8c8;
+  /*일반적인 block요소와 달리
+   position fixed와 absolute는 가로 넓이가 최소한으로 줄어들려고 한다. */
+  position: fixed;
+  top: 0;
+  z-index: 9;
 }
 /* 메인 메뉴의 inner가 영향을 받으면 안되기 때문에, 자식요소를 선택하는 >를 추가 */
 header > .inner {
@@ -234,4 +303,177 @@ header .main-menu .item .item__contents .contents__texture h4{
 header .main-menu .item .item__contents .contents__texture p{
   color: #669900;
   margin: 4px 0 14px;
+}
+
+header .badges {
+  position: absolute;
+  top: 132px;
+  right: 12px;
+}
+
+header .badges .badge {
+  border-radius: 10px;
+  /* 모서리는 div를 이용해서 둥글게 깎지만
+  이미지는 둥글게 깎아진 밖으로 넘치는 부분을 가리기 */
+  overflow: hidden;
+  margin-bottom: 12px;
+  /* 그림자 */
+  box-shadow: 4px 4px 10px; rgba(0,0,0,.15);
+  cursor: pointer;
+}
+
+/* VISUAL */
+.visual {
+  /* header의 높이 값 */
+  margin-top: 120px;
+  background-image: url("../images/visual_bg.jpg");
+  background-position: center;
+}
+
+.visual .inner {
+  height: 646px;
+}
+
+/* inner부분 생략 */
+.visual .title{
+  position: absolute;
+  top: 88px;
+  left: -10px;
+}
+
+.visual .title .btn{
+  position: absolute;
+  top: 259px;
+  left: 173px;
+}
+
+.visual .cup1.image {
+  position: absolute;
+  bottom: 0;
+  right: -47px;
+}
+
+.visual .cup1.text {
+  position: absolute;
+  top: 38px;
+  right: 171px;
+}
+
+.visual .cup2.image {
+  position: absolute;
+  bottom: 0;
+  right: 162px;
+}
+
+.visual .cup2.text {
+
+  position: absolute;
+  top: 321px;
+  right: 416px;
+}
+
+.visual .spoon {
+  position: absolute;
+  bottom: 0;
+  left: 275px;
+}
+
+.visual .fade-in {
+  opacity: 0;
+}
+
+/* NOTICE */
+
+.notice {
+
+}
+
+.notice .notice-line {
+  position: relative;
+}
+
+.notice .notice-line .bg-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #333;
+}
+
+.notice .notice-line .bg-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #f6f5ef;
+}
+
+.notice .notice-line .inner {
+  height: 62px;
+  display: flex;
+}
+.notice .notice-line .inner__left {
+  width: 60%;
+  height: 100%;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.notice .notice-line .inner__left h2 {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.notice .notice-line .inner__left .swiper-container {
+  /* innerleft가 allign-items를 center로 하면 stretch가 풀리기 때문에, 높이 지정 */
+  height: 62px;
+  background-color: orange;
+  flex-grow: 1;
+  /* flex를 사용하면, allign items의 기본값이 stretch이기 때문에
+    최대한 위아래로 늘어난다.
+  */
+}
+
+.notice .notice-line .inner__left .notice-line__more {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice .notice-line .inner__left .notice-line__more .material-icons{
+  color: #fff;
+  font-size: 30px;
+}
+
+.notice .notice-line .inner__right {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.notice .notice-line .inner__right h2{
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.notice .notice-line .inner__right .toggle-promotion{
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice .notice-line .inner__right .toggle-promotion .material-icons{
+  font-size: 30px;
 }
