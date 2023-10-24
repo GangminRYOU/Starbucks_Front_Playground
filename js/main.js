@@ -64,3 +64,74 @@ fadeEls.forEach((fadeEl, index) => {
     opacity: 1
   });
 });
+
+// new Swiper(선택자, 옵션)
+new Swiper('.notice-line .swiper-container', {
+  direction: 'vertical',
+  // 자동으로 slide
+  autoplay: true,
+  // 반복재생 여부
+  loop: true
+});
+
+// 프로모션 slide Swiper
+new Swiper('.promotion .swiper-container', {
+  // 기본값
+  // direction: 'horizontal',
+  slidesPerView: 3, //한번에 보여줄 슬라이드 갯수
+  spaceBetween: 10, //슬라이드 사이 여백
+  centeredSlides: true, //1번 슬라이드가 가운데 보이기
+  loop: true,
+  // autoplay: {
+  //   delay: 5000
+  // }
+  pagination: {
+    el: '.promotion .swiper-pagination', //페이지 번호, 요소 선택자
+    clickable: true //사용자의 페이지 번호 요소 제어 가능 여부
+  },
+  // 요소 선택할수 있게 
+  navigation: {
+    prevEl: '.promotion .swiper-prev',
+    nextEl: '.promotion .swiper-next'
+  }
+});
+
+const promotionEl = document.querySelector('.promotion');
+const promotionToggleBtn = document.querySelector('.toggle-promotion');
+
+let isHidePromotion = false;
+promotionToggleBtn.addEventListener('click',() => {
+  // 누르면 반대가 되도록
+  isHidePromotion = !isHidePromotion;
+  if(isHidePromotion) {
+    // TRUE면 숨김처리
+    promotionEl.classList.add('hide');
+  }else{
+    // 보임처리
+    promotionEl.classList.remove('hide');
+  }
+});
+// 범위 랜덤 함수(소수점 2자리까지)
+function random(min, max) {
+  // `.toFixed()`를 통해 반환된 문자 데이터를,
+  // `parseFloat()`을 통해 소수점을 가지는 숫자 데이터로 변환
+  return parseFloat((Math.random() * (max - min) + min).toFixed(2))
+}
+//선택자를 매개변수
+function floatingObject(selector, delay, size) {
+  //gsap.to(요소, 애니메이션동작 시간, 옵션)
+  gsap.to(selector, random(1.5, 2.5), {
+    //y축으로 얼만큼 움직이는 애니메이션
+    y: size,
+    //무한반복
+    repeat: -1,
+    //다시 뒤로재생
+    yoyo: true,
+    ease: "power1.inOut",
+    delay: random(0, delay)
+  });
+}
+
+floatingObject('.floating1', 1, 15);
+floatingObject('.floating2', .5, 15);
+floatingObject('.floating3', 1.5, 20);

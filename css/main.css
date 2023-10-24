@@ -5,7 +5,8 @@ body {
   font-weight: 400px;
   line-height: 1.4;
   font-family: 'Nanum Gothic', sans-serif;
-  height: 3000px;
+  /* 나중에 3000으로 바꾸기 */
+  height: 6000px;
 }
 
 img {
@@ -47,7 +48,7 @@ a {
 /* 그냥 버튼 보다 더 우선순위가 높다. */
 .btn.btn--reverse {
   color: #fff;
-  border-color: #333;
+  background-color: #333;
 }
 
 .btn.btn--reverse:hover {
@@ -76,11 +77,11 @@ a {
 }
 
 .btn.btn--white {
-  color: #FFF;
+  color: #fff;
   border-color: #FFF;
 }
 
-.btn.btn--white {
+.btn.btn--white:hover {
   color: #333;
   background-color: #FFF;
 }
@@ -432,11 +433,21 @@ header .badges .badge {
 .notice .notice-line .inner__left .swiper-container {
   /* innerleft가 allign-items를 center로 하면 stretch가 풀리기 때문에, 높이 지정 */
   height: 62px;
-  background-color: orange;
+  /* background-color: orange; */
   flex-grow: 1;
   /* flex를 사용하면, allign items의 기본값이 stretch이기 때문에
     최대한 위아래로 늘어난다.
   */
+}
+
+.notice .notice-line .inner__left .swiper-slide {
+  height: 62px;
+  display: flex;
+  align-items: center;
+}
+
+.notice .notice-line .inner__left .swiper-slide a {
+  color: #fff;
 }
 
 .notice .notice-line .inner__left .notice-line__more {
@@ -476,4 +487,383 @@ header .badges .badge {
 
 .notice .notice-line .inner__right .toggle-promotion .material-icons{
   font-size: 30px;
+}
+
+.notice .promotion {
+  height: 693px;
+  background-color: #f6f5ef;
+  position: relative;
+  transition: height .4s;
+  /* 크기가 넘치면 삐져나오는 내부 요소들을 잘라버리겠다는 의미 */
+  overflow: hidden;
+}
+
+.notice .promotion.hide {
+  height: 0;
+}
+.notice .promotion .swiper-container{
+  width: calc(819px * 3 + 20px);
+  /* 이것도 가능 */
+  /* width: calc(100% - 50px); */
+  height: 553px;
+  /* background-color: orange; */
+  /* 글자 가운데 정렬 */
+  /* text-align: center; */
+  /* font-size: 200px; */
+  /* 위의 설정으로만 하면, 화면을 확대하면, 가운데 정렬이 풀린다. */
+  position: absolute;
+  top: 40px;
+  /* 부모를 기준으로 자신의 '위치 기준'을 정 가운데로 옮긴다. */
+  left: 50%;
+  /* swiper-container의 가로넓이의 절반을 입력해야한다. */
+  /* 위치기준은 유지하되 요소를 가로넓이 절반만큼 땡겨온다. */
+  /* margin-left: -1238.5px; */
+  margin-left: calc((819px * 3 + 20px) / -2);
+}
+
+.notice .promotion .swiper-slide {
+  opacity: .5;
+  /* opacity만 1초동안 변환 */
+  transition: opacity 1;
+  position: relative;
+}
+
+.notice .promotion .swiper-slide-active {
+  opacity: 1;
+}
+
+.notice .promotion .swiper-slide .btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* 가운데 배치는 요소의 가로 넓이가 있어야 하는데 우리는 이미 위에 정의해두었다. */
+  margin: auto;
+}
+
+.notice .promotion .swiper-pagination {
+  bottom: 40px;
+  left: 0px;
+  right: 0px;
+}
+
+.notice .promotion .swiper-pagination .swiper-pagination-bullet {
+  /* 파란색 배경 없애기 */
+  background-color: transparent;
+  background-image: url("../images/promotion_slide_pager.png");
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  outline: none;
+}
+
+.notice .promotion .swiper-pagination .swiper-pagination-bullet:last-child{
+  margin-right: 0;
+}
+
+.notice .promotion .swiper-pagination .swiper-pagination-bullet-active{
+  background-image: url("../images/promotion_slide_pager_on.png");
+}
+
+/* 다중 선택자 */
+.notice .promotion .swiper-prev,
+.notice .promotion .swiper-next {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top:300px;
+  z-index: 1;
+  /* 버튼이니까 */
+  cursor: pointer;
+  outline: none;
+  /* 화살표 가운데로 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .4s;
+}
+
+.notice .promotion .swiper-prev {
+  left: 50%;
+  margin-left: -480px;
+}
+
+.notice .promotion .swiper-next {
+  right: 50%;
+  margin-right: -480px;
+}
+
+.notice .promotion .swiper-prev:hover,
+.notice .promotion .swiper-next:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* REWARDS */
+.rewards {
+  position:  relative;
+}
+
+.rewards .bg-left{
+  width: 50%;
+  height: 100%;
+  background: #272727;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rewards .bg-right{
+  width: 50%;
+  height: 100%;
+  background: #d5c798;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.rewards .inner {
+  background-image: url('../images/rewards.jpg');
+  height: 241px;
+  /* 전역속성 inner클래스에 position값이 선언되어있다. */
+}
+
+
+.rewards .btn-group{
+  width: 250px;
+  display: flex;
+  /* 가로 넓이 250px보다 넘치면 줄바꿈을 하겠다. */
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 24px;
+  right: 0;
+}
+
+.rewards .btn-group .btn.sign-up{
+  margin-right: 10px;
+}
+
+.rewards .btn-group .btn.sign-in{
+  width: 110px;
+}
+
+.rewards .btn-group .btn.gift{
+  margin-top: 10px;
+  /* display flex container 내부에서 최대한 늘어나라 */
+  flex-grow: 1;
+}
+
+
+/* YOUTUBE VIDEO */
+.youtube {
+  position: relative;
+  height: 700px;
+  background-color: #333;
+  /* 넘치는 부분이 잘리게 된다. */
+  overflow: hidden;
+}
+
+.youtube .youtube__area{
+  width: 1920px;
+  background-color: orange;
+  position: absolute;
+  /* 가로 가운데 정렬 */
+  left: 50%;
+  margin-left: calc(1920px/-2);
+  /* 세로 가운데 정렬 */
+  top: 50%;
+  margin-top: calc(1920px * 9 / 16 / -2);
+}
+/* 가상클래스를 통해 내부 크기를 정의
+굳이 클래스 블록을 html에 따로 만들필요 없음 */
+.youtube .youtube__area::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+}
+
+.youtube .youtube__cover{
+  background-image: url("../images/video_cover_pattern.png");
+  background-color: rgba(0, 0, 0, .3);
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#player {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.youtube .inner {
+  height: 700px;
+}
+
+.youtube .floating1 {
+  position: absolute;
+  top:50px;
+  left: 0;
+}
+
+.youtube .floating2 {
+  position: absolute;
+  top:350px;
+  left: 150;
+}
+
+
+
+/* SEASON PRODUCT */
+.season-product {
+  background-image: url("../images/season_product_bg.jpg");
+}
+
+.season-product .inner {
+  height: 400px;
+}
+
+.season-product .floating3 {
+  position: absolute;
+  top: -200px;
+  right: 0;
+}
+
+.season-product .text-group{
+  position: absolute;
+  top: 110px;
+  right: 100px;
+}
+
+.season-product .text-group .title{
+  margin-bottom: 10px;
+}
+
+.season-product .text-group .description {
+  margin-bottom: 15px;
+}
+
+.season-product .text-group .more{
+  
+}
+
+
+/* RESERVE COFFEE */
+
+.reserve-coffee {
+  background-image: url(../images/reserve_bg.jpg);
+}
+
+.reserve-coffee .inner{
+  height: 400px;
+}
+
+.reserve-coffee .reserve-logo {
+  position: absolute;
+  top: 110px;
+  left: 0;
+}
+
+.reserve-coffee .text-group {
+  position: absolute;
+  top: 124px;
+  left: 208px;
+}
+
+.reserve-coffee .product {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* PICK YOUR FAVORITE */
+.pick-your-favorite {
+  background-image: url("../images/favorite_bg.jpg");
+  background-repeat: no-repeat;
+  /* section의 정가운데에 위치 */
+  background-position: center;
+  /* 요소가 스크롤이 되어도 같이 스크롤되지 않는다. */
+  background-attachment: fixed;
+  /* 요소의 더 넓은 너비에 맞춘다. -> 뷰포트에 더 넓은 너비에 맞춰진다. */
+  background-size: cover;
+}
+
+.pick-your-favorite .inner{
+  padding: 110px 0;
+}
+
+.pick-your-favorite .text-group{
+  margin-left: 100px;
+  width: 362px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pick-your-favorite .text-group .title{
+  margin-bottom: 40px;
+}
+
+.pick-your-favorite .text-group .description{
+  margin-bottom: 40px;
+}
+
+
+/* RESERVE STORE */
+.reserve-store {
+  background-image: url(../images/reserve_store_bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+.reserve-store .inner {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.reserve-store .medal {
+  width: 334px;
+  height: 334px;
+  perspective: 600px;
+}
+
+.reserve-store .medal .front,
+.reserve-store .medal .back {
+  width: 334px;
+  height: 334px;
+  backface-visibility: hidden;
+  transition: 1s;
+}
+
+.reserve-store .medal .front{
+  position: absolute;
+  transform: rotateY(0deg);
+}
+
+
+.reserve-store .medal:hover .front{
+  position: absolute;
+  transform: rotateY(180deg);
+}
+
+.reserve-store .medal .back{
+  transform: rotateY(-180deg);
+}
+
+.reserve-store .medal:hover .back{
+  transform: rotateY(0deg);
 }
